@@ -1,6 +1,6 @@
 use asopros_ventas;
--- consulta el total de ventas por producto
-SELECT p.nombre, SUM(do.cantidad) AS total_vendido
-FROM productos p
-JOIN detalles_orden do ON p.id = do.producto_id
-GROUP BY p.nombre;
+-- el total de ventas por producto
+SELECT p.name AS product_name, SUM(od.quantity) AS total_sold, SUM(od.subtotal) AS total_sales
+FROM order_details od
+INNER JOIN products p ON od.product_id = p.id
+GROUP BY p.name;

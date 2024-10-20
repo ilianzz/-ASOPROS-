@@ -1,6 +1,6 @@
 use asopros_ventas;
 -- consulta de ordenes con total calculado
-SELECT o.id, o.fecha_orden, SUM(do.subtotal) AS total_calculado
-FROM ordenes o
-JOIN detalles_orden do ON o.id = do.orden_id
-GROUP BY o.id, o.fecha_orden;
+SELECT o.id AS order_id, SUM(od.subtotal) AS calculated_total
+FROM orders o
+INNER JOIN order_details od ON o.id = od.order_id
+GROUP BY o.id;
